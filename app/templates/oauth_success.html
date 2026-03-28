@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>GitHub Auth Successful</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0d1117; color: #e6edf3;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 100vh; padding: 24px;
+        }
+        .card {
+            background: #161b22; border: 1px solid #30363d;
+            border-radius: 12px; padding: 40px; max-width: 640px; width: 100%;
+        }
+        .badge {
+            display: inline-block; background: #238636; color: #fff;
+            border-radius: 20px; padding: 4px 14px; font-size: 13px;
+            font-weight: 600; margin-bottom: 20px;
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; }
+        p { color: #8b949e; font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+        .token-box {
+            background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+            padding: 14px 16px; font-family: monospace; font-size: 13px;
+            word-break: break-all; color: #79c0ff; margin-bottom: 16px;
+        }
+        .copy-btn {
+            background: #21262d; border: 1px solid #30363d; color: #e6edf3;
+            border-radius: 6px; padding: 8px 16px; cursor: pointer;
+            font-size: 13px; margin-bottom: 24px;
+        }
+        .copy-btn:hover { background: #30363d; }
+        .steps {
+            background: #0d1117; border: 1px solid #30363d;
+            border-radius: 8px; padding: 20px;
+        }
+        .steps h2 { font-size: 15px; margin-bottom: 14px; }
+        .step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+        .step-num {
+            background: #1f6feb; border-radius: 50%; width: 22px; height: 22px;
+            min-width: 22px; display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700;
+        }
+        .step-text { font-size: 13px; color: #8b949e; line-height: 1.5; padding-top: 2px; }
+        .step-text a { color: #58a6ff; text-decoration: none; }
+        .scope { font-size: 12px; color: #8b949e; margin-top: 20px; }
+        .scope code { background: #21262d; padding: 2px 6px; border-radius: 4px; color: #79c0ff; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="badge">✓ Authentication successful</div>
+        <h1>Your GitHub Access Token</h1>
+        <p>Copy this token and paste it into the Swagger UI to start making API calls.</p>
+
+        <div class="token-box" id="token">{{ token }}</div>
+        <button class="copy-btn" onclick="copyToken()">📋 Copy token</button>
+
+        <div class="steps">
+            <h2>How to use this token</h2>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">Open <a href="/docs" target="_blank">Swagger UI (/docs)</a></div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">Click the 🔓 <strong>Authorize</strong> button (top right)</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">Paste your token in the <strong>Bearer</strong> field → click <strong>Authorize</strong></div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-text">All API calls will now include your token automatically</div>
+            </div>
+        </div>
+
+        <p class="scope">Granted scopes: <code>{{ scope }}</code></p>
+    </div>
+
+    <script>
+        function copyToken() {
+            navigator.clipboard.writeText(document.getElementById('token').textContent).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => btn.textContent = '📋 Copy token', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

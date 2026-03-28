@@ -39,7 +39,7 @@ github-connector/
 │   │   ├── auth.py              # OAuth 2.0 login + callback endpoints
 │   │   ├── repos.py             # Repository endpoints
 │   │   ├── issues.py            # Issue endpoints
-│   │   ├── pull_requests.py     # Pull request endpoints (bonus)
+│   │   ├── pull_requests.py     # Pull request endpoints
 │   │   └── commits.py           # Commit endpoints
 │   ├── services/
 │   │   ├── github_client.py     # Core async HTTP client for GitHub API
@@ -73,8 +73,8 @@ github-connector/
 ### Step 1 — Clone and enter the project
 
 ```bash
-git clone <your-repo-url>
-cd github-connector
+git clone https://github.com/naman005/aventisia-backend 
+cd aventisia-backend
 ```
 
 ### Step 2 — Install dependencies
@@ -191,7 +191,7 @@ Authorization: Bearer ghp_your_token_here
 
 ---
 
-### Pull Requests *(Bonus)*
+### Pull Requests
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
